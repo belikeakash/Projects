@@ -4,7 +4,6 @@ import sound2 from "./audio/audio4.wav";
 import "./Drum.css";
 
 
-
 function Drum() {
   const audio1 = new Audio(sound1);
   const audio2 = new Audio(sound2);
