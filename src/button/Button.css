@@ -1,0 +1,21 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.key {
+    font-size: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40%;
+}
+
+.key_code {
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+}
