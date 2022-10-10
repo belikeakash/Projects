@@ -4,21 +4,23 @@ function Match() {
   const [value, setValue] = useState("");
   const [res, setRes] = useState([]);
   function doFilter(x) {
-    let str1 = x.toLowerCase();
+    let str1 = x.city.toLowerCase();
+    let str3 = x.state.toLowerCase();
     let str2 = value.toLowerCase();
-    if (str1.includes(str2)) return 1;
+    if (str1.includes(str2) || str3.includes(str2)) return 1;
     else return 0;
   }
   function Pressed(e) {
     // e.preventDefault();
     // setValue(e.target.value);
   }
+  
 
   useEffect(() => {
     console.log(value);
     const up = [];
     for (let i = 0; i < cities.length; i++) {
-      if (doFilter(cities[i].city) === 1) {
+      if (doFilter(cities[i]) === 1) {
         up.push(cities[i]);
       }
     }
