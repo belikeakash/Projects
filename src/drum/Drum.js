@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import sound1 from "./audio/audio2.wav";
+import sound1 from "./audio/audio1.mp3";
 import sound2 from "./audio/audio4.wav";
 import "./Drum.css";
 
@@ -27,16 +27,19 @@ function Drum() {
   function findPlay1() {
     console.log("link");
     setisPlaying(!isPlaying);
+    
     PlaySound1();
   }
   function findPlay2() {
     console.log("link");
     setisPlaying(!isPlaying);
+    
     PlaySound2();
   }
   function PlaySound1() {
     audio1.currentTime = 0;
     audio1.play();
+    StopSound2();
     console.log(audio1.duration);
     setIsClass("play");
     setTimeout(() => {
@@ -48,6 +51,7 @@ function Drum() {
   }
   function PlaySound2() {
     audio2.currentTime = 0;
+    StopSound1()
     audio2.play();
     setIsClass("play");
     console.log(audio2.duration);
@@ -62,13 +66,13 @@ function Drum() {
   return (
     <>
     <div className="container">
-    <div className={isclass} onClick={findPlay1}><div onClick={PlaySound1}></div></div>
-    <div className={isclass} onClick={findPlay2}><div onClick={PlaySound2}></div></div>
+    <div className={isclass} onClick={findPlay1}><div></div></div>
+    <div className={isclass} onClick={findPlay2}><div></div></div>
     </div>
       
 
       <div className="footer">
-        FOR MOBILE DEVICES TAP ON CIRCLES || FOR KEYPAD DEVICES EITHER TAP OR USE *A* & *D* KEYS
+        FOR MOBILE DEVICES TAP ON CLOUDS || FOR KEYPAD DEVICES EITHER TAP OR USE *A* & *D* KEYS
       </div>
 
       <div className="container_bottom">
