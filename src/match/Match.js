@@ -2,11 +2,29 @@ import React, { useEffect, useState } from "react";
 
 function Match() {
   const [value, setValue] = useState("");
-  function Pressed(e) {
-    e.preventDefault();
-    setValue(e.target.value);
-    console.log(value);
+  const [res, setRes] = useState([]);
+  function doFilter(x) {
+    let str1 = x.toLowerCase();
+    let str2 = value.toLowerCase();
+    if (str1.includes(str2)) return 1;
+    else return 0;
   }
+  function Pressed(e) {
+    // e.preventDefault();
+    // setValue(e.target.value);
+  }
+
+  useEffect(() => {
+    console.log(value);
+    const up = [];
+    for (let i = 0; i < cities.length; i++) {
+      if (doFilter(cities[i].city) === 1) {
+        up.push(cities[i]);
+      }
+    }
+    setRes(up);
+  }, [value]);
+
   const [cities, setCities] = useState([]);
 
   const endpoint =
@@ -22,18 +40,19 @@ function Match() {
       .then(function (data) {
         setCities(data);
       });
-    // console.log(res);
   }
 
-//   console.log(cities);
   return (
     <>
-      <input type="text" value={value} onChange={Pressed} />
-      {/* <div className="">{JSON.stringify(cities)}</div> */}
+      <input
+        type="text"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+
       <div>
-        {cities.map((item)=> (
-            // console.log(item.city)
-            <p key={item.latitude}>{item.city}</p>
+        {res.map((data) => (
+          <p key={data.latitude}>{data.city}</p>
         ))}
       </div>
     </>
