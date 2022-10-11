@@ -1,11 +1,11 @@
 import React from "react";
-import Match from "./match/Match";
+import CheckBox from "./checkbox/CheckBox";
 function App() {
   
   return (
     <>
       <div>
-        <Match />
+        <CheckBox />
       </div>
     </>
   );
